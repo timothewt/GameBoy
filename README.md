@@ -2,6 +2,8 @@
 
 Game Boy emulator in C++.
 
+Work in progress.
+
 ## How to use
 
 1. Clone the repository
@@ -20,7 +22,7 @@ make
 
 3. Start the program with one of the available ROMs
 ```
-./gameboy ../roms/[rom].gb
+./gameboy ../roms/tetris.gb
 ```
 
 ## Dependencies
