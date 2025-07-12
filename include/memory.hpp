@@ -16,7 +16,7 @@
  */
 inline bool is_in_between(uint16_t value, uint16_t a, uint16_t b)
 {
-    return (a <= value) && (value <= b);
+    return (a <= value) and (value <= b);
 }
 
 /**
@@ -24,6 +24,13 @@ inline bool is_in_between(uint16_t value, uint16_t a, uint16_t b)
  */
 class Memory {
 public:
+    /**
+     * @brief Class constructor
+     */
+    Memory();
+
+    static constexpr uint16_t IF_ADDR = 0xff0f;
+    static constexpr uint16_t IE_ADDR = 0xffff;
     /**
      * @brief Loads a ROM into memory.
      *
@@ -35,9 +42,16 @@ public:
      * @brief Reads a byte from the memory at a given address.
      *
      * @param address Address of the byte to read.
-     * @return The value of the byte at this address.
+     * @return The value of the byte at this address, given by copy.
      */
     uint8_t read_byte(uint16_t address);
+    /**
+     * @brief Reads a byte from the memory at a given address.
+     *
+     * @param address Address of the byte to read.
+     * @return The value of the byte at this address, given by reference.
+     */
+    uint8_t& at(uint16_t address);
     /**
      * @brief Writes the value of a byte in the memory at a given address.
      *
@@ -55,4 +69,5 @@ private:
     std::array<uint8_t, 0x80> io_regs; /**< I/O Registers, hardware control and status. */
     std::array<uint8_t, 0x7f> hram; /**< High RAM, fast internal memory. */
     uint8_t interrupt_reg; /**< Interrupt Enable Register. */
+    uint8_t default_return = 0xff; /**< Default return value for fetching. */
 };

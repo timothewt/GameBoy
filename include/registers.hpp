@@ -16,6 +16,16 @@ union RegisterPair {
     {
         val = value;
     }
+
+    uint16_t& get()
+    {
+        return val;
+    }
+
+    const uint16_t& get() const
+    {
+        return val;
+    }
 };
 
 /**
@@ -29,14 +39,14 @@ struct Registers {
     uint16_t pc; /**< Program counter pointing on the next instruction in memory. */
     uint16_t sp; /**< Stack pointer. */
 
-    uint8_t& a() { return af.hi; };
-    uint8_t& f() { return af.lo; };
-    uint8_t& b() { return bc.hi; };
-    uint8_t& c() { return bc.lo; };
-    uint8_t& d() { return de.hi; };
-    uint8_t& e() { return de.lo; };
-    uint8_t& h() { return hl.hi; };
-    uint8_t& l() { return hl.lo; };
+    uint8_t& a() { return af.hi; }
+    uint8_t& f() { return af.lo; }
+    uint8_t& b() { return bc.hi; }
+    uint8_t& c() { return bc.lo; }
+    uint8_t& d() { return de.hi; }
+    uint8_t& e() { return de.lo; }
+    uint8_t& h() { return hl.hi; }
+    uint8_t& l() { return hl.lo; }
 
     static constexpr uint8_t FLAG_Z = 1 << 7; /**< Zero flag. */
     static constexpr uint8_t FLAG_N = 1 << 6; /**< Subtract flag. */

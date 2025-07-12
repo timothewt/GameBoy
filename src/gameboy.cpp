@@ -4,6 +4,7 @@
 GameBoy::GameBoy()
     : memory()
     , cpu(memory)
+    , ppu()
 {
 }
 
@@ -14,6 +15,8 @@ void GameBoy::load_rom(const std::string& filename)
 
 void GameBoy::run()
 {
-    while (true)
+    while (true) {
         cpu.cycle();
+        ppu.cycle();
+    }
 }

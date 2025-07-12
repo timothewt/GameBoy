@@ -2,6 +2,7 @@
 
 #include "cpu.hpp"
 #include "memory.hpp"
+#include "ppu.hpp"
 #include <string>
 
 /**
@@ -27,4 +28,5 @@ public:
 private:
     CPU cpu; /**< Game Boy CPU handling the execution of the operation codes read from the ROM memory. */
     Memory memory; /**< Game Boy memory, with the loaded ROM, RAM and so on. */
+    PPU ppu; /**< Pixel Processing Unit, the display of the console. */
 };
